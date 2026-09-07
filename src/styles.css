@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
+    "Hiragino Sans GB", "Noto Sans SC", "Segoe UI", sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC",
+    "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+
+  --color-bg: #e8e8ed;
+  --color-surface: #f5f5f7;
+  --color-card: #ffffff;
+  --color-raised: #f2f2f4;
+  --color-fg: #1d1d1f;
+  --color-muted: #6e6e73;
+  --color-subtle: #86868b;
+  --color-accent: #0071e3;
+  --color-accent-fg: #ffffff;
+  --color-border: #d2d2d7;
+  --color-track: #e5e5ea;
+  --color-up: #248a3d;
+  --color-down: #d70015;
+  --color-bg-rgb: 232 232 237;
+
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.04);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    min-height: 100%;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+.halo-shell {
+  min-height: 100dvh;
+  background: radial-gradient(1200px 500px at 50% -10%, #ffffff, var(--color-bg));
+  display: flex;
+  justify-content: center;
+}
+
+.halo-phone {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100dvh;
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.04), 0 24px 80px rgb(0 0 0 / 0.08);
+}
+
+@media (min-width: 640px) {
+  .halo-phone {
+    min-height: min(100dvh, 920px);
+    margin: 24px 0;
+    border-radius: 36px;
+    overflow: hidden;
+  }
+}
+
+.halo-tabbar {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+  border-radius: 22px;
+  background: color-mix(in oklab, var(--color-card) 86%, transparent);
+  backdrop-filter: saturate(1.4) blur(18px);
+  -webkit-backdrop-filter: saturate(1.4) blur(18px);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 0.08);
+  border: 1px solid rgb(255 255 255 / 0.6);
+}
+
+.halo-field {
+  margin-top: 6px;
+  width: 100%;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--color-raised);
+  border: 0;
+  padding: 0 14px;
+  font-size: 16px;
+  color: var(--color-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.halo-field:focus {
+  outline: 2px solid color-mix(in oklab, var(--color-accent) 45%, transparent);
+  outline-offset: 1px;
+}
+
+.halo-range {
+  width: 100%;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-track);
+}
+
+.halo-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.2);
+  border: 1px solid rgb(0 0 0 / 0.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
